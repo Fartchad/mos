@@ -199,7 +199,44 @@ p {
     height: 20px;
     border-radius: 50%; /* Membuat ikon bulat jika ingin */
 }
+        .heart {
+  position: fixed;
+  color: red;
+  font-size: 20px;
+  top: -10px;
+  animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
     </style>
+    <script>function createHeart() {
+  const heart = document.createElement("div");
+  heart.innerHTML = "💕";
+  heart.classList.add("heart");
+  
+  // Posisi jatuh secara acak
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = Math.random() * 2 + 3 + "s"; // Waktu jatuh bervariasi
+  
+  document.body.appendChild(heart);
+
+  // Hapus elemen setelah animasi selesai
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}
+
+// Buat love jatuh setiap 300ms
+setInterval(createHeart, 300);</script>
 </head>
 <body>
 
